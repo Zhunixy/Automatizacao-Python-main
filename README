@@ -1,0 +1,38 @@
+BEM VINDO AO PROJETO DE AUTOMATIZAÇÃO DE PREENCHIMENTO DE FOMULÁRIO EM PYTHON
+
+PRIMEIROS PASSOS
+-Instale as bibliotecas 
+*PYAUTOGUI
+*OPENPYXL
+*PYSIMPLEGUI
+
+Abra o CMD e digite:
+pip install (Biblioteca)
+
+==============================
+
+-Abra o mouseInfo
+Abra o cmd e digite:
+
+python
+from mouseinfo import mouseInfo
+mouseInfo()
+
+*Irá abrir um programa para a coleta das coordenadas da interface
+
+==============================
+
+SEGUNDOS PASSOS
+-Abra uma cópia da pasta em outra janela VSCODE
+-E Inicie a interface.py
+
+Logo após isso com o mouseInfo em tela, clique em F6 com cursor em cima de cada campo
+E aparecerá as coordenadas no mouseInfo
+
+*Substitua as coordenadas no arquivo app.py nas linhas a partir da linha 10
+
+===========================
+
+FINALIZANDO
+-Inicie o arquivo app.py e os dados da planilha irão se autocompletar nos campos
+(PARA PARAR DE PREENCHER APENAS MOVA O MOUSE PARA OS LADOS)
