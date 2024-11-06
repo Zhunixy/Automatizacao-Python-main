@@ -1,0 +1,116 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilização do body */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f3f4f6;
+    color: #333;
+}
+
+/* Container do formulário */
+form {
+    background-color: #ffffff;
+    width: 400px;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4a90e2;
+}
+
+/* Labels e inputs */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #555;
+    transition: border-color 0.3s ease;
+}
+
+/* Estilo do campo de seleção */
+select {
+    appearance: none;
+    background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 4 5"><path fill="gray" d="M2 0l2 2H0z"/></svg>') no-repeat right 10px center;
+    background-color: #fff;
+    background-size: 10px;
+    cursor: pointer;
+}
+
+/* Foco nos inputs */
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: #4a90e2;
+    outline: none;
+}
+
+/* Botão de envio */
+.btn-save{
+    width: 100%;
+    padding: 12px;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #357abd;
+}
+
+/* Espaçamento no final */
+form {
+    margin-bottom: 20px;
+}
+
+/* Mensagem de sucesso */
+.success-message {
+    color: #155724;                  
+    background-color: #d4edda;    
+    border: 1px solid #c3e6cb;      
+    margin: 15px 0;               
+    border-radius: 5px;              
+    font-weight: bold;             
+    text-align: center;            
+}
+
+/* Mensagem de erro */
+.error-message {
+    color: #721c24;                
+    background-color: #f8d7da;    
+    border: 1px solid #f5c6cb;   
+    margin: 15px 0;              
+    border-radius: 5px;             
+    font-weight: bold;               
+    text-align: center;            
+}
