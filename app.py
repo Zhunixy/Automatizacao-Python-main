@@ -3,6 +3,7 @@ import openpyxl
 import pyautogui
 import threading
 import time
+import keyboard
 
 workbook = openpyxl.load_workbook('vendas_de_produtos.xlsx')
 vendas_sheet = workbook['vendas']
@@ -12,12 +13,18 @@ def stop():
     if not stopped:
         stopped = True
         print("Automatação encerrada")
-    
+
+stopped = False
 stopped = False
 
 def automation_loop():
     global stopped
     
+    while True:
+        if stopped:
+            print("Automatação pausada")
+            break
+        
     # Carregar o arquivo Excel de vendas
     workbook = openpyxl.load_workbook('vendas_de_produtos.xlsx')
     vendas_sheet = workbook['vendas']
@@ -56,20 +63,16 @@ def mouse_monitor():
         if current_time - last_click_time > click_interval:
             stop()
             break
+        
+        if keyboard.is_pressed('esc'):  # Adicionando verificação de teclado
+            stop()
+            print("Automatação pausada pelo teclado")
+            break
+        
         time.sleep(0.1)
+# Iniciar os threads
+threading.Thread(target=automation_loop).start()
+threading.Thread(target=mouse_monitor).start()
 
-def main():
-    global stopped
-       
-    # Iniciar a thread de automação
-    automation_thread = threading.Thread(target=automation_loop)
-    automation_thread.start()
-    
-    # Aguardar até que a automação seja encerrada ou o programa seja fechado
-    while not stopped:
-        time.sleep(0.1)
-
-
-if __name__ == "__main__":
-    main()
-    main()
+print("Pressione 'q' para pausar a automação.")
+keyboard.wait('q')  # Aguardar até que 'Esc' seja pressionado
