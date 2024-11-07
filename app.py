@@ -2,33 +2,19 @@
 import openpyxl
 import pyautogui
 import threading
-import time
+import os
 import keyboard
 
+# Carregar o arquivo Excel de vendas
 workbook = openpyxl.load_workbook('vendas_de_produtos.xlsx')
-vendas_sheet = workbook['vendas']
+vendas_sheet = workbook['vendas']  # Selecionar a planilha chamada 'vendas'
 
-def stop():
-    global stopped
-    if not stopped:
-        stopped = True
-        print("Automatação encerrada")
-
-stopped = False
-stopped = False
-
-def automation_loop():
-    global stopped
-    
+def stop():  #Função para parar o script
     while True:
-        if stopped:
-            print("Automatação pausada")
-            break
-        
-    # Carregar o arquivo Excel de vendas
-    workbook = openpyxl.load_workbook('vendas_de_produtos.xlsx')
-    vendas_sheet = workbook['vendas']
-    
+        if keyboard.is_pressed('esc'):
+            os._exit(0)
+
+def dados():
     # Iterar sobre cada linha do arquivo Excel, começando da segunda linha (índice 2)
     for linha in vendas_sheet.iter_rows(min_row=2):
         # Nome do cliente
@@ -50,29 +36,7 @@ def automation_loop():
         pyautogui.click(1187,685,duration=0.5)  # Selecioinar a categoria do produto
         pyautogui.click(1371,189,duration=0.5)
     
-    print("Automatação concluída")
-
-def mouse_monitor():
-    global stopped
-    
-    last_click_time = time.time()
-    click_interval = 0.5  # Tempo máximo entre cliques
-    
-    while True:
-        current_time = time.time()
-        if current_time - last_click_time > click_interval:
-            stop()
-            break
-        
-        if keyboard.is_pressed('q'):  # Adicionando verificação de teclado
-            stop()
-            print("Automatação pausada pelo teclado")
-            break
-        
-        time.sleep(0.1)
-# Iniciar os threads
-threading.Thread(target=automation_loop).start()
-threading.Thread(target=mouse_monitor).start()
-
-print("Pressione 'q' para pausar a automação.")
-keyboard.wait('q')  # Aguardar até que 'Esc' seja pressionado
+                
+# pyautogui.hotkey('win','6') 
+threading.Thread(target=dados).start()
+threading.Thread(target=stop).start()
