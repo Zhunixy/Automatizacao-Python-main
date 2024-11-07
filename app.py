@@ -64,7 +64,7 @@ def mouse_monitor():
             stop()
             break
         
-        if keyboard.is_pressed('esc'):  # Adicionando verificação de teclado
+        if keyboard.is_pressed('q'):  # Adicionando verificação de teclado
             stop()
             print("Automatação pausada pelo teclado")
             break
